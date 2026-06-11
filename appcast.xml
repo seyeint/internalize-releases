@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Internalize</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Thu, 11 Jun 2026 23:41:51 +0100</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.1.0/Internalize-0.1.0.dmg" length="4886107" type="application/octet-stream" sparkle:edSignature="1rKYyBW2hpZw2Wl8c8v5m0KQChpcCKWQCAHZYQrf1hpP5moNQMdifSkYr7vK9FyIMGoCLdtcTEOgydDuPRwbBA=="/>
+        </item>
+    </channel>
+</rss>
