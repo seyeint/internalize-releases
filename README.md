@@ -47,7 +47,7 @@ Internalize is built local-first and is honest about what it touches:
 
 ## Support
 
-Internalize is free and built by one person. If it makes your reading life better, you can support development — link coming soon.
+Internalize is free and built by one person. If it makes your reading life better, you can [**buy me a coffee on Ko-fi** ☕](https://ko-fi.com/internalize) — tips keep the app free for everyone.
 
 ---
 
