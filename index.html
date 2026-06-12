@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Internalize — The AI PDF reader that runs on your ChatGPT plan</title>
+<meta name="description" content="Read deeper. Internalize is a free, native macOS PDF reader with AI conversations grounded in your documents — running on your own ChatGPT plan via Codex. No API keys, no subscription." />
+<meta property="og:title" content="Internalize — Read deeper" />
+<meta property="og:description" content="Free, native macOS AI PDF reader. Runs on your own ChatGPT plan. No API keys." />
+<meta property="og:image" content="https://seyeint.github.io/internalize-releases/icon.png" />
+<link rel="icon" type="image/png" href="icon.png" />
+<link rel="apple-touch-icon" href="icon.png" />
+<style>
+  :root {
+    --bg: #0a0c11;
+    --bg2: #0d1018;
+    --panel: rgba(255,255,255,0.035);
+    --panel-2: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.09);
+    --border-2: rgba(255,255,255,0.17);
+    --text: #e9edf5;
+    --muted: #9aa4b6;
+    --faint: #677185aa;
+    --accent: #6e8bff;
+    --accent-soft: rgba(110,139,255,0.14);
+    --green: #34d399;
+    --orange: #f0a868;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans);
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  ::selection { background: rgba(110,139,255,0.35); }
+
+  .glow {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(1000px 700px at 75% -10%, rgba(110,139,255,0.17), transparent 60%),
+      radial-gradient(800px 600px at 10% 10%, rgba(52,211,153,0.07), transparent 55%),
+      radial-gradient(900px 700px at 50% 110%, rgba(110,139,255,0.08), transparent 60%);
+  }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── Nav ─────────────────────────────────────────── */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0;
+  }
+  .brand { font-weight: 750; font-size: 19px; letter-spacing: -0.02em; color: var(--text); }
+  .brand .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; align-items: center; font-size: 14.5px; }
+  .nav-links a { color: var(--muted); transition: color .15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    color: var(--text) !important; border: 1px solid var(--border-2);
+    padding: 7px 16px; border-radius: 999px; background: var(--panel-2); transition: all .15s;
+  }
+  .nav-cta:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+  /* ── Hero ────────────────────────────────────────── */
+  .hero { text-align: center; padding: 72px 0 30px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px;
+    color: #c9d4ff; background: var(--accent-soft); border: 1px solid rgba(110,139,255,0.4);
+    border-radius: 999px; padding: 5px 14px; margin-bottom: 26px;
+  }
+  .pill .dot-live { width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 8px var(--green); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: 0.4; } }
+  h1 {
+    font-size: clamp(42px, 7vw, 72px); line-height: 1.04; letter-spacing: -0.035em; font-weight: 800;
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, #aebfff 0%, var(--accent) 45%, #8ea5ff 80%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-sub {
+    max-width: 640px; margin: 22px auto 0; color: var(--muted); font-size: 19px; line-height: 1.55;
+  }
+  .hero-sub b { color: var(--text); font-weight: 600; }
+
+  .cta-row { display: flex; gap: 14px; justify-content: center; align-items: center; margin-top: 36px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #5879db, #6e8bff);
+    color: #fff; font-weight: 650; font-size: 16.5px;
+    padding: 15px 30px; border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(110,139,255,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 38px rgba(110,139,255,0.45), inset 0 1px 0 rgba(255,255,255,0.25); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--text); font-size: 15.5px; padding: 14px 24px; border-radius: 14px;
+    border: 1px solid var(--border-2); background: var(--panel); transition: all .15s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .dl-meta { margin-top: 14px; font-size: 13px; color: var(--faint); }
+  .dl-meta span { color: var(--muted); }
+
+  /* ── App mockup ──────────────────────────────────── */
+  .mock-stage { padding: 56px 0 20px; perspective: 1400px; }
+  .window {
+    max-width: 980px; margin: 0 auto; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border-2);
+    background: linear-gradient(180deg, #11141c, #0d1017);
+    box-shadow: 0 40px 120px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03),
+                0 0 90px rgba(110,139,255,0.07);
+    transform: rotateX(4deg); transform-origin: top center;
+  }
+  .titlebar {
+    display: flex; align-items: center; gap: 8px; padding: 11px 14px;
+    background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border);
+  }
+  .tl { width: 11px; height: 11px; border-radius: 50%; }
+  .tl.r { background: #ff5f57; } .tl.y { background: #febc2e; } .tl.g { background: #28c840; }
+  .titlebar .title { flex: 1; text-align: center; font-size: 12px; color: var(--faint); margin-right: 40px; }
+
+  .app-body { display: grid; grid-template-columns: 168px 1fr 300px; min-height: 430px; font-size: 12px; }
+
+  .m-sidebar { border-right: 1px solid var(--border); padding: 12px 10px; background: rgba(255,255,255,0.012); }
+  .m-cap { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--faint); margin: 10px 6px 5px; }
+  .m-row { display: flex; align-items: center; gap: 7px; padding: 5px 7px; border-radius: 6px; color: var(--muted); white-space: nowrap; overflow: hidden; }
+  .m-row.active { background: rgba(110,139,255,0.16); color: #cdd8ff; }
+  .m-ico { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; background: var(--accent); opacity: 0.75; }
+  .m-ico.conv { background: var(--green); } .m-ico.ann { background: var(--orange); }
+
+  .m-pdf { padding: 26px 30px 40px; position: relative; background: rgba(255,255,255,0.018); }
+  .m-pdf .pg-title { height: 11px; width: 62%; border-radius: 4px; background: rgba(255,255,255,0.22); margin-bottom: 14px; }
+  .m-line { height: 7px; border-radius: 4px; background: rgba(255,255,255,0.09); margin: 8px 0; }
+  .m-line.w90 { width: 90%; } .m-line.w95 { width: 96%; } .m-line.w80 { width: 82%; } .m-line.w70 { width: 71%; }
+  .m-line.hl { background: linear-gradient(90deg, rgba(110,139,255,0.55), rgba(110,139,255,0.4)); width: 64%; }
+  .m-eq {
+    margin: 16px auto; width: 60%; padding: 12px; text-align: center;
+    border: 1px dashed rgba(240,168,104,0.5); border-radius: 8px;
+    color: #f3ddc6; font-family: var(--mono); font-size: 11px; background: rgba(240,168,104,0.06);
+  }
+  .m-map { position: absolute; left: 30px; right: 30px; bottom: 16px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.08); }
+  .m-map .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 46%; border-radius: 4px; background: rgba(110,139,255,0.4); }
+  .m-map .mk { position: absolute; top: -2.5px; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #0d1017; }
+  .m-map .mk.a { left: 22%; background: var(--accent); }
+  .m-map .mk.b { left: 45%; background: var(--orange); animation: pulse 2.4s ease-in-out infinite; }
+  .m-map .mk.c { left: 78%; background: var(--accent); }
+
+  .m-chat { border-left: 1px solid var(--border); display: flex; flex-direction: column; background: rgba(255,255,255,0.012); }
+  .m-chat-head { padding: 10px 13px; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+  .m-msgs { flex: 1; padding: 13px; display: flex; flex-direction: column; gap: 10px; }
+  .m-user {
+    align-self: flex-end; max-width: 85%; padding: 7px 11px; border-radius: 11px;
+    background: rgba(110,139,255,0.2); border: 1px solid rgba(110,139,255,0.3); color: #dbe3ff; font-size: 11.5px;
+  }
+  .m-ai { color: #c6cedd; font-size: 11.5px; line-height: 1.55; }
+  .m-ai .tline { display: block; opacity: 0; animation: appear .5s ease forwards; }
+  .m-ai .tline:nth-child(1) { animation-delay: .6s; } .m-ai .tline:nth-child(2) { animation-delay: 1.5s; }
+  .m-ai .tline:nth-child(3) { animation-delay: 2.4s; } .m-ai .tline:nth-child(4) { animation-delay: 3.3s; }
+  @keyframes appear { to { opacity: 1; } }
+  .caret { display: inline-block; width: 6px; height: 11px; background: var(--accent); margin-left: 2px; vertical-align: -1px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .m-input { margin: 11px; padding: 8px 11px; border: 1px solid var(--border-2); border-radius: 10px; color: var(--faint); font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+  .m-foot { display: flex; gap: 8px; padding: 0 13px 11px; font-size: 9.5px; color: var(--faint); }
+
+  /* ── Sections ────────────────────────────────────── */
+  section { padding: 84px 0 0; }
+  .sec-head { text-align: center; max-width: 620px; margin: 0 auto 44px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.025em; line-height: 1.15; }
+  .sec-head p { color: var(--muted); margin-top: 12px; font-size: 17px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: rgba(110,139,255,0.4); transform: translateY(-2px); }
+  .card .ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 11px; margin-bottom: 14px;
+    color: #a5b6ff; background: var(--accent-soft);
+    border: 1px solid rgba(110,139,255,0.3);
+  }
+  .card .ic svg { width: 21px; height: 21px; }
+  .card h3 { font-size: 16.5px; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .card p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .card p code { font-family: var(--mono); font-size: 0.85em; background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 5px; }
+
+  /* ── How it works ────────────────────────────────── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+  .stepc { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
+  .stepc::before {
+    counter-increment: s; content: counter(s);
+    display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent-soft); border: 1px solid rgba(110,139,255,0.45); color: #c9d4ff;
+    font-family: var(--mono); font-size: 15px; margin-bottom: 14px;
+  }
+  .stepc h3 { font-size: 16.5px; margin-bottom: 6px; }
+  .stepc p { color: var(--muted); font-size: 14px; }
+
+  /* ── Privacy ─────────────────────────────────────── */
+  .privacy {
+    background: linear-gradient(180deg, rgba(52,211,153,0.05), transparent);
+    border: 1px solid rgba(52,211,153,0.25); border-radius: 20px; padding: 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 36px;
+  }
+  .privacy h2 { grid-column: 1 / -1; font-size: 26px; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .pv { display: flex; gap: 11px; align-items: flex-start; font-size: 14.5px; color: var(--muted); }
+  .pv b { color: var(--text); font-weight: 600; }
+  .pv .chk { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+  /* ── FAQ ─────────────────────────────────────────── */
+  .faq { max-width: 720px; margin: 0 auto; }
+  details {
+    border: 1px solid var(--border); border-radius: 13px; background: var(--panel);
+    padding: 0 20px; margin-bottom: 10px; transition: border-color .2s;
+  }
+  details[open] { border-color: rgba(110,139,255,0.35); }
+  summary { cursor: pointer; padding: 16px 0; font-weight: 600; font-size: 15.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font-size: 19px; font-weight: 400; transition: transform .2s; flex-shrink: 0; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); font-size: 14.5px; padding-bottom: 18px; }
+
+  /* ── Final CTA + footer ──────────────────────────── */
+  .final { text-align: center; padding: 96px 0 30px; }
+  .final h2 { font-size: clamp(30px, 4.5vw, 44px); letter-spacing: -0.03em; }
+  .final p { color: var(--muted); margin: 12px 0 30px; font-size: 17px; }
+  footer {
+    margin-top: 80px; border-top: 1px solid var(--border); padding: 30px 0 44px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    color: var(--faint); font-size: 13.5px;
+  }
+  footer .flinks { display: flex; gap: 22px; }
+  footer a { color: var(--muted); } footer a:hover { color: var(--text); }
+
+  @media (max-width: 860px) {
+    .grid, .steps { grid-template-columns: 1fr; }
+    .privacy { grid-template-columns: 1fr; padding: 28px; }
+    .app-body { grid-template-columns: 1fr 260px; }
+    .m-sidebar { display: none; }
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
+  @media (max-width: 620px) {
+    .app-body { grid-template-columns: 1fr; }
+    .m-chat { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">Internalize<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="https://github.com/seyeint/internalize-releases/releases/latest" id="nav-dl">Download</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="pill"><span class="dot-live"></span> Free · runs on your own ChatGPT plan · no API keys</div>
+    <h1>Don't just read.<br /><span class="grad">Internalize.</span></h1>
+    <p class="hero-sub">
+      A native macOS PDF reader where you <b>converse with what you read</b> — select a passage,
+      capture a diagram, ask anything. Built on Codex, so the AI runs on the
+      <b>ChatGPT plan you already pay for</b>. No API keys. No subscription. No servers.
+    </p>
+    <div class="cta-row">
+      <a class="btn-primary" id="dl-btn" href="https://github.com/seyeint/internalize-releases/releases/latest">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for macOS
+      </a>
+      <a class="btn-secondary" href="https://github.com/seyeint/internalize-releases">View on GitHub</a>
+    </div>
+    <div class="dl-meta" id="dl-meta">macOS 15+ · Apple Silicon &amp; Intel · signed &amp; notarized by Apple</div>
+  </header>
+
+  <div class="mock-stage">
+    <div class="window" role="img" aria-label="The Internalize app: a PDF beside an AI chat panel">
+      <div class="titlebar"><span class="tl r"></span><span class="tl y"></span><span class="tl g"></span><div class="title">Internalize — attention_is_all_you_need.pdf</div></div>
+      <div class="app-body">
+        <div class="m-sidebar">
+          <div class="m-cap">Documents</div>
+          <div class="m-row active"><span class="m-ico"></span> attention.pdf</div>
+          <div class="m-row"><span class="m-ico"></span> deep_rl_survey</div>
+          <div class="m-cap">Conversations</div>
+          <div class="m-row"><span class="m-ico conv"></span> Multi-head attention</div>
+          <div class="m-row"><span class="m-ico conv"></span> Positional encoding</div>
+          <div class="m-cap">Annotations</div>
+          <div class="m-row"><span class="m-ico ann"></span> Eq. 1 · page 4</div>
+        </div>
+        <div class="m-pdf">
+          <div class="pg-title"></div>
+          <div class="m-line w95"></div>
+          <div class="m-line w90"></div>
+          <div class="m-line hl"></div>
+          <div class="m-line w80"></div>
+          <div class="m-eq">Attention(Q, K, V) = softmax(QKᵀ/√dₖ)V</div>
+          <div class="m-line w95"></div>
+          <div class="m-line w70"></div>
+          <div class="m-line w90"></div>
+          <div class="m-map"><div class="fill"></div><span class="mk a"></span><span class="mk b"></span><span class="mk c"></span></div>
+        </div>
+        <div class="m-chat">
+          <div class="m-chat-head"><span>Eq. 1 · scaled dot-product</span><span>⌘F</span></div>
+          <div class="m-msgs">
+            <div class="m-user">why divide by √dₖ here?</div>
+            <div class="m-ai">
+              <span class="tline">Without it, dot products grow with dimension —</span>
+              <span class="tline">softmax saturates and gradients vanish.</span>
+              <span class="tline">Scaling by √dₖ keeps the logits in a range</span>
+              <span class="tline">where attention stays trainable.<span class="caret"></span></span>
+            </div>
+          </div>
+          <div class="m-input"><span>Ask about the content…</span><span>↑</span></div>
+          <div class="m-foot"><span>✦ Codex · gpt-5.5</span><span>·</span><span>High</span><span>·</span><span>Whole doc</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="sec-head">
+      <h2>A reading tool, not a chatbot with a file picker</h2>
+      <p>Every conversation is anchored to the page. Every annotation has a place. Everything stays on your Mac.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></span><h3>Grounded conversations</h3><p>One tap chooses what the AI sees: your selection, everything up to your page, or the whole document. Context is never re-sent when it hasn't changed.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2" stroke-dasharray="4 3"/><path d="M9 12.5l2 2 4-4.5"/></svg></span><h3>Ask about diagrams</h3><p>Draw a box over any figure or equation and ask. Vision included — captures travel with the conversation as annotations.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><circle cx="7" cy="12" r="2.2" fill="currentColor" stroke="none"/><circle cx="13.5" cy="12" r="2.2"/><circle cx="18.5" cy="12" r="2.2"/></svg></span><h3>Document map</h3><p>A strip beneath the PDF anchors every annotation to its exact line, doubles as your reading-progress bar, and previews before it jumps.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 11 22 20 10 13 10 13 2"/></svg></span><h3>Streamed &amp; resumable</h3><p>Replies stream token by token. Conversation history lives in threads that resume — fast follow-ups, no re-uploading your document.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="15"/><line x1="10" y1="20" x2="10" y2="9"/><line x1="15" y1="20" x2="15" y2="12"/><line x1="20" y1="20" x2="20" y2="5"/></svg></span><h3>Reading life, measured</h3><p>A focus timer feeds a GitHub-style activity heatmap — streaks, finished documents, even your AI token usage per project.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21.5"/></svg></span><h3>Voice, both ways</h3><p>Dictate questions with on-device speech recognition; have answers read aloud. Find anything with <code>⌘F</code>, export everything to Markdown.</p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <h2>Running in two minutes</h2>
+      <p>Internalize contains no AI of its own — it drives the Codex app you install from OpenAI, on your own plan. That's why it's free.</p>
+    </div>
+    <div class="steps">
+      <div class="stepc"><h3>Install Codex</h3><p>Get the <a href="https://developers.openai.com/codex">Codex app</a> and sign in with your ChatGPT account. If you already use Codex, you're done.</p></div>
+      <div class="stepc"><h3>Download Internalize</h3><p>Open the DMG, drag to Applications, launch. Signed and notarized — no warnings, no setup, and it updates itself from then on.</p></div>
+      <div class="stepc"><h3>Read deeper</h3><p>Import a PDF, select anything, and ask. Your documents, annotations, and conversations persist in workspaces — locally.</p></div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="privacy">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:23px;height:23px;color:var(--green);vertical-align:-3px;margin-right:10px"><path d="M12 3l7 3v5.5c0 4.3-3 7.6-7 9-4-1.4-7-4.7-7-9V6l7-3z"/><polyline points="9 11.5 11.2 13.7 15.2 9.7"/></svg>Local-first, by architecture</h2>
+      <div class="pv"><span class="chk">✓</span><div><b>Your documents stay on your Mac.</b> The only network traffic is your own AI requests, through your own Codex installation.</div></div>
+      <div class="pv"><span class="chk">✓</span><div><b>No telemetry, no analytics, no accounts.</b> We operate zero servers. Verify it with any network monitor.</div></div>
+      <div class="pv"><span class="chk">✓</span><div><b>Credentials never touch Internalize.</b> You sign in inside Codex itself; the app only reads availability.</div></div>
+      <div class="pv"><span class="chk">✓</span><div><b>Codex runs caged.</b> Read-only sandbox, approvals disabled, isolated profile — Internalize can't write files or run commands through it.</div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head"><h2>Questions, answered honestly</h2></div>
+    <div class="faq">
+      <details>
+        <summary>Is it really free? What's the catch?</summary>
+        <p>Really free. The expensive part of AI apps is the AI — Internalize sidesteps that by running on the ChatGPT plan you already have, through the Codex app on your machine. There's no catch to monetize; if the app earns a place in your reading life, there'll be a tip jar.</p>
+      </details>
+      <details>
+        <summary>Why does it need Codex?</summary>
+        <p>Codex is OpenAI's local agent app, and its app-server protocol is the documented way for third-party software to integrate it. That's what lets Internalize give you frontier-model conversations with zero API keys and zero per-token costs — your plan, your machine, your data.</p>
+      </details>
+      <details>
+        <summary>Does Internalize see my ChatGPT password or data?</summary>
+        <p>No. You sign in inside Codex itself — Internalize never handles credentials. It runs Codex in an isolated, read-only profile, so your personal Codex setup is untouched and the app can't perform actions through it, only conversations.</p>
+      </details>
+      <details>
+        <summary>Which Macs does it support?</summary>
+        <p>macOS 15 or newer, Apple Silicon and Intel (universal binary). The app is signed with an Apple Developer ID and notarized, and ships its own one-click updates.</p>
+      </details>
+      <details>
+        <summary>Why isn't it on the App Store?</summary>
+        <p>The App Store sandbox forbids apps from launching external programs — which is precisely how Internalize drives Codex. Direct distribution with Apple's notarization gives you the same malware-scanned safety without that limitation.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2>Your next paper deserves better<br />than a highlighter.</h2>
+    <p>Free. Native. Private. On the plan you already pay for.</p>
+    <a class="btn-primary" id="dl-btn-2" href="https://github.com/seyeint/internalize-releases/releases/latest">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Internalize
+    </a>
+  </section>
+
+  <footer>
+    <div>Internalize · made by <a href="https://github.com/seyeint">taste</a> · not affiliated with or endorsed by OpenAI or Apple</div>
+    <div class="flinks">
+      <a href="https://github.com/seyeint/internalize-releases/releases">Releases</a>
+      <a href="https://github.com/seyeint/internalize-releases/issues">Issues</a>
+      <a href="#" id="support-link" hidden>Support ☕</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Resolve the latest DMG directly so the button downloads in one click and the
+  // version caption stays current — the site never needs editing per release.
+  // Falls back to the releases page if the API is unavailable (rate limit, offline).
+  (async () => {
+    try {
+      const r = await fetch("https://api.github.com/repos/seyeint/internalize-releases/releases/latest");
+      if (!r.ok) return;
+      const rel = await r.json();
+      const dmg = (rel.assets || []).find(a => a.name.endsWith(".dmg"));
+      if (!dmg) return;
+      for (const id of ["dl-btn", "dl-btn-2", "nav-dl"]) {
+        const el = document.getElementById(id);
+        if (el) el.href = dmg.browser_download_url;
+      }
+      const mb = (dmg.size / 1048576).toFixed(1);
+      document.getElementById("dl-meta").innerHTML =
+        `<span>${rel.tag_name}</span> · ${mb} MB · macOS 15+ · Apple Silicon &amp; Intel · signed &amp; notarized by Apple`;
+    } catch (_) { /* fallback links already point at the releases page */ }
+  })();
+
+  // Tip jar — shown in the footer; the app stays free either way.
+  const SUPPORT_URL = "https://ko-fi.com/internalize";
+  if (SUPPORT_URL) {
+    const s = document.getElementById("support-link");
+    s.href = SUPPORT_URL; s.hidden = false;
+  }
+</script>
+</body>
+</html>

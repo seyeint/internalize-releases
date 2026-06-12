@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="icon.png" width="128" alt="Internalize icon" />
+
 # Internalize
 
 **An AI-powered PDF reader for deep learning — running on your own ChatGPT plan.**
