@@ -6,7 +6,7 @@
 
 **A native Mac PDF reader where you converse with what you're reading, on the ChatGPT plan you already have.**
 
-Select a passage, capture a diagram, ask anything. Every answer is anchored to the page.
+Ask anything about the document, or select a passage first. The AI reads the pages your question needs and cites them.
 No API keys, no subscription, no servers. Free.
 
 ### [⬇ Download the latest version](https://github.com/seyeint/internalize-releases/releases/latest) · [getinternalize.com](https://getinternalize.com)
@@ -30,16 +30,18 @@ The app is signed and notarized by Apple, so it opens without warnings. Updates 
 
 ## Features
 
-- 📄 Native PDF reading with per-document zoom, ⌘F search, and drag-and-drop import
-- 🤖 Streamed AI conversations grounded in your selection, your pages, or the whole document
+- 🤖 The AI reads the document itself: it has the table of contents and two tools (search the text, read pages), looks up what your question needs, and cites the pages. A short document travels in full; a long book is read on demand. Every step shows in the conversation
+- 🖍️ Highlights that stay on the page in the color you chose, with notes, exported as Markdown
+- 📑 The PDF's own contents in the sidebar, with the chapter you're in marked
+- 🔍 Scanned PDFs get their text recognized on your Mac, once; ⌘F search works on them too
 - 🔗 Page references in answers are links: click "p. 12" and you're there
 - ✍️ Area capture for diagrams and equations (vision)
-- 🗂️ A project hub where every project wears its document's title page
-- 🗺️ Document map: every annotation anchored to its exact place, plus reading progress
+- 🗂️ A project hub where every project wears its document's title page; Open With ▸ Internalize from the Finder
+- 🗺️ Document map: every highlight anchored to its exact place, plus reading progress
 - ⏱️ Focus timer with a reading activity dashboard: heatmap, streaks, time by project
-- 📊 Your ChatGPT plan usage, right in the chat footer
-- 🎙️ Voice: dictate questions, hear answers read aloud
-- 📤 Export any conversation to Markdown
+- 📊 Your ChatGPT plan usage, in the reply menu and beside it when it's running low
+- 🔊 Hear answers read aloud
+- 📤 Export conversations and highlights to Markdown
 
 ## Privacy and security model
 
@@ -47,7 +49,7 @@ Internalize is built local-first and is honest about what it touches:
 
 - **Your documents and conversations never leave your Mac** except as AI requests through your own Codex installation, the same path as chatting in the ChatGPT app itself
 - **No telemetry, no analytics, no accounts, no servers operated by us**
-- Codex runs in an **isolated, read-only profile** with browser, computer, app, plugin, and multi-agent capabilities switched off: Internalize can ask it questions and nothing else, and your personal Codex configuration is never loaded
+- Codex runs in an **isolated, read-only profile** with the shell, browser, computer, app, plugin, and multi-agent capabilities switched off: the model can read your document and search the web, and nothing else. Your personal Codex configuration is never loaded
 - Your ChatGPT credentials are **never handled by Internalize**. Sign-in happens in the ChatGPT app; verify all of this with any network monitor
 
 ## Support
