@@ -273,7 +273,7 @@
     <div class="demo-wrap">
       <div>
         <h2 class="statement">it reads before it answers.</h2>
-        <p class="lead" style="margin-top:22px">The model has the document's table of contents and two tools: search its text, read its pages. It looks up what your question needs, cites what it found, and every step shows in the conversation. A short paper travels whole; a long book is read on demand.</p>
+        <p class="lead" style="margin-top:22px">The model has the document's table of contents and three tools: search its text, read its pages, and look at a page as it's printed, figures and tables included. It looks up what your question needs and cites the exact words; a click on a citation lands on them. Every step shows in the conversation. A short paper travels whole; a long book is read on demand.</p>
       </div>
       <div class="demo" aria-label="A question being answered: the model searches the document, reads two pages, and replies with page citations">
         <div class="q">Which four tasks does the paper compare, and where does ES win by the most?</div>
@@ -284,9 +284,9 @@
         <div class="fold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Read pages 3 to 4 · 2 steps</span><span class="chev">›</span></div>
         <div class="a">
           <p class="l1">The four tasks are <b>Countdown</b>, <b>Math</b>, <b>SciKnowEval Chemistry</b> and <b>BoolQ</b> <span class="pg">(p. 3)</span>.</p>
-          <p class="l2">ES beats GRPO by the largest margin on <b>Countdown</b>: 78.6% vs 74.5%, a 4.1 point lead <span class="pg">(p. 4)</span>.</p>
+          <p class="l2">ES beats GRPO by the largest margin on <b>Math</b>: 74.0% vs 68.8%, a <b>5.2 point</b> lead <span class="pg">(p. 4)</span>.</p>
         </div>
-        <div class="bar"><span class="ring"></span><span>GPT-6 Astra · High</span></div>
+        <div class="bar"><span class="ring"></span><span>GPT-6 Sol · Low</span></div>
       </div>
     </div>
     <div class="features">
@@ -296,7 +296,7 @@
       </div>
       <div class="feature">
         <h3 class="h3">diagrams too</h3>
-        <p>Draw over any figure or equation and ask. Captures travel with the conversation, mapped to their place in the document.</p>
+        <p>Hold Option and drag over a figure or equation, then ask. And when a question is about a chart or a table, the model looks at the page itself.</p>
       </div>
       <div class="feature">
         <h3 class="h3">a reading life, kept</h3>
@@ -314,7 +314,7 @@
       <p class="lead">Internalize contains no AI of its own. It drives Codex, the agent inside OpenAI's ChatGPT app, on your Mac and on your account. That's why it's free.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h4>install the chatgpt app</h4><p>Codex ships inside the <a href="https://learn.chatgpt.com/codex/app">ChatGPT app for Mac</a>. Sign in with your ChatGPT account. If you already use Codex on this Mac, you're done.</p></div>
+      <div class="step"><div class="n">01</div><h4>have the chatgpt app</h4><p>Internalize answers through the <a href="https://learn.chatgpt.com/codex/app">ChatGPT app for Mac</a>, on your plan. Already use it? You're set: Internalize signs you in with one click, on OpenAI's own page.</p></div>
       <div class="step"><div class="n">02</div><h4>download internalize</h4><p>Open the DMG, drag to Applications, launch. Signed and notarized, no warnings, no setup, and it updates itself from then on.</p></div>
       <div class="step"><div class="n">03</div><h4>read deeper</h4><p>Drop a PDF on the welcome screen, select anything, and ask. Your documents, annotations, and conversations persist in projects, locally.</p></div>
     </div>
@@ -336,7 +336,7 @@
     <div class="grid2">
       <div class="pv"><h4>your documents stay on your mac</h4><p>The only network traffic is your own AI requests, through your own Codex installation.</p></div>
       <div class="pv"><h4>no telemetry, no analytics, no accounts</h4><p>We operate zero servers. Verify it with any network monitor.</p></div>
-      <div class="pv"><h4>credentials never touch internalize</h4><p>You sign in inside the ChatGPT app; Internalize only reads that it's there.</p></div>
+      <div class="pv"><h4>credentials never touch internalize</h4><p>You sign in on OpenAI's page; Internalize only checks that you're signed in.</p></div>
       <div class="pv"><h4>codex runs caged</h4><p>Read-only sandbox, approvals off, an isolated profile with the shell, browser, computer and app access switched off. It can read your document and search the web. It can't act on your Mac.</p></div>
     </div>
   </div>
@@ -349,7 +349,7 @@
     <div class="faq">
       <details>
         <summary>is it really free? what's the catch?</summary>
-        <p>Really free, and open source. The expensive part of AI apps is the AI. Internalize sidesteps that by running on the ChatGPT plan you already have, through Codex on your machine. There's no catch to monetize; if the app earns a place in your reading life, there's a tip jar.</p>
+        <p>Really free. The expensive part of AI apps is the AI. Internalize sidesteps that by running on the ChatGPT plan you already have, through Codex on your machine. There's no catch to monetize; if the app earns a place in your reading life, there's a tip jar.</p>
       </details>
       <details>
         <summary>why does it need codex?</summary>
@@ -357,7 +357,7 @@
       </details>
       <details>
         <summary>does internalize see my chatgpt password or data?</summary>
-        <p>No. You sign in inside the ChatGPT app. Internalize never handles credentials. It runs Codex in an isolated, read-only profile with no shell, so your personal Codex setup is untouched and the app can't perform actions through it, only conversations.</p>
+        <p>No. You sign in on OpenAI's own page (Internalize opens it for you) or in the ChatGPT app. Internalize never handles credentials. It runs Codex in an isolated, read-only profile with no shell, so your own Codex settings are untouched and the app can't perform actions through it, only conversations.</p>
       </details>
       <details>
         <summary>which macs does it support?</summary>
