@@ -31,6 +31,7 @@ The app is signed and notarized by Apple, so it opens without warnings. Updates 
 ## Features
 
 - 🤖 The AI reads the document itself: it has the table of contents and three tools (search the text, read pages, look at a page as it's printed, figures and tables included), looks up what your question needs, and cites the exact words. A short document travels in full; a long book is read on demand. Every step shows in the conversation
+- 💬 Replies keep going: hide the chat, open the hub or switch conversations, and the answer keeps coming in; two conversations can be answered at once
 - 🎯 Citations land on the words they quote, and light them for a moment; ⌘[ and ⌘] go back and forward through every jump
 - 📖 Printed page numbers, as the book numbers them ("Page xii (14 of 400)"), and Go to Page (⌥⌘G) takes them
 - 👁️ Force click a link inside the PDF (a reference, a figure, a chapter) to peek at where it goes without losing your place
