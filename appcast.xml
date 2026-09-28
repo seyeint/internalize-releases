@@ -3,12 +3,12 @@
     <channel>
         <title>Internalize</title>
         <item>
-            <title>0.6.0</title>
-            <pubDate>Sun, 27 Sep 2026 01:27:01 +0100</pubDate>
-            <sparkle:version>8</sparkle:version>
-            <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
+            <title>0.6.1</title>
+            <pubDate>Mon, 28 Sep 2026 16:45:13 +0100</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.6.0/Internalize-0.6.0.dmg" length="8447945" type="application/octet-stream" sparkle:edSignature="MoE0uGa69oTjnPNQiyLylEyTRZ2jx/PY5A7c5Ax5WfRUIdXA38YrTWqFRkB3Ua3IJPfa3R2qdBtqzCnktBGiBw=="/>
+            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.6.1/Internalize-0.6.1.dmg" length="8451069" type="application/octet-stream" sparkle:edSignature="YDMuwcTxo+/idGv4SthvuEpDA9cdnenQdg7s8rcqGYLBEgpEpeVRae0saAmpdUFc0s/QrnGc0PGqnIZIROWSDQ=="/>
         </item>
     </channel>
 </rss>
