@@ -129,14 +129,14 @@
   .demo-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 5vw, 80px); align-items: center; margin-top: clamp(40px, 6vw, 80px); }
   .demo {
     position: relative; border-radius: 16px; padding: 22px 22px 26px; min-height: 340px;
-    background: #14130f; border: 1px solid rgba(244,241,234,0.1);
+    background: #1e1612; border: 1px solid rgba(244,241,234,0.1);
     box-shadow: 0 30px 80px rgba(0,0,0,0.5); font-size: 15px; line-height: 1.45;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: var(--chalk); overflow: hidden;
   }
   .demo .q {
     margin-left: auto; width: fit-content; max-width: 78%; padding: 9px 13px; border-radius: 12px;
-    background: rgba(78, 168, 120, 0.22); border: 1px solid rgba(78,168,120,0.35);
+    background: rgba(219, 123, 69, 0.20); border: 1px solid rgba(219,123,69,0.32);
   }
   .demo .steps { margin-top: 18px; display: grid; gap: 6px; font-size: 13.5px; color: var(--chalk-2); }
   .demo .step { display: flex; align-items: center; gap: 8px; }
@@ -147,10 +147,10 @@
   .demo .fold .chev { font-size: 11px; opacity: .7; }
   .demo .a { margin-top: 12px; color: var(--chalk); }
   .demo .a p + p { margin-top: 8px; }
-  .demo .a .pg { color: #6fb7ff; }
+  .demo .a .pg { color: #db7b45; }
   .demo .a b { font-weight: 600; }
   .demo .bar { position: absolute; left: 22px; right: 22px; bottom: 12px; font-size: 12px; color: rgba(244,241,234,0.45); display: flex; align-items: center; gap: 6px; }
-  .demo .bar .ring { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid rgba(244,241,234,0.25); border-top-color: #4ea878; }
+  .demo .bar .ring { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid rgba(244,241,234,0.25); border-top-color: #db7b45; }
 
   /* One shared 16 s timeline; each element's keyframes place it on it, so the whole
      scene restarts together. Question at 0.6 s, the two steps at 1.8 s and 3.8 s, the
@@ -283,8 +283,8 @@
         </div>
         <div class="fold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Read pages 3 to 4 · 2 steps</span><span class="chev">›</span></div>
         <div class="a">
-          <p class="l1">The four tasks are <b>Countdown</b>, <b>Math</b>, <b>SciKnowEval Chemistry</b> and <b>BoolQ</b> <span class="pg">(p. 3)</span>.</p>
-          <p class="l2">ES beats GRPO by the largest margin on <b>Math</b>: 74.0% vs 68.8%, a <b>5.2 point</b> lead <span class="pg">(p. 4)</span>.</p>
+          <p class="l1">The four tasks are <b>Countdown</b>, <b>Math</b>, <b>SciKnowEval Chemistry</b> and <b>BoolQ</b> <span class="pg">(p.&nbsp;3)</span>.</p>
+          <p class="l2">ES beats GRPO by the largest margin on <b>Math</b>: 74.0% vs 68.8%, a <b>5.2 point</b> lead <span class="pg">(p.&nbsp;4)</span>.</p>
         </div>
         <div class="bar"><span class="ring"></span><span>GPT-6 Sol · Low</span></div>
       </div>
