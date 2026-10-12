@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Internalize, the AI PDF reader that runs on your ChatGPT plan</title>
-<meta name="description" content="Internalize is a free, native macOS PDF reader where the AI reads the document itself, cites the page, and runs on your own ChatGPT plan through Codex. No API keys, no subscription, no servers." />
+<title>Internalize, the AI PDF reader that runs on your ChatGPT or Claude plan</title>
+<meta name="description" content="Internalize is a free, native macOS PDF reader where the AI reads the document itself, cites the page, and runs on your own ChatGPT or Claude plan, through Codex or Claude Code. No API key needed, no subscription, no servers." />
 <meta property="og:title" content="Internalize. Don't just read." />
-<meta property="og:description" content="Free, native macOS AI PDF reader. Runs on your own ChatGPT plan. No API keys." />
+<meta property="og:description" content="Free, native macOS AI PDF reader. Runs on your own ChatGPT or Claude plan. No API key needed." />
 <meta property="og:image" content="https://getinternalize.com/icon.png" />
 <link rel="icon" type="image/png" href="icon.png" />
 <link rel="apple-touch-icon" href="icon.png" />
@@ -243,7 +243,7 @@
   </nav>
   <div class="wrap">
     <h1 class="display">don't just read.<br />internalize.</h1>
-    <p class="sub">A native Mac reader where you converse with what you're reading. The AI reads the document itself and cites the page. Built on Codex, so it runs on the ChatGPT plan you already pay for.</p>
+    <p class="sub">A native Mac reader where you converse with what you're reading. The AI reads the document itself and cites the page. Built on Codex and Claude Code, so it runs on the ChatGPT or Claude plan you already pay&nbsp;for.</p>
     <div class="cta">
       <a class="pill light" id="dl-btn" href="https://github.com/seyeint/internalize-releases/releases/latest">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -311,14 +311,20 @@
     <p class="eyebrow">how it works</p>
     <div class="two">
       <h2 class="statement">runs on the plan you already pay for.</h2>
-      <p class="lead">Internalize contains no AI of its own. It drives Codex, the agent inside OpenAI's ChatGPT app, on your Mac and on your account. That's why it's free.</p>
+      <p class="lead">Internalize contains no AI of its own. It drives Codex, the agent inside OpenAI's ChatGPT app, or Anthropic's Claude Code, on your Mac and on your account. That's why it's free.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h4>have the chatgpt app</h4><p>Internalize answers through the <a href="https://learn.chatgpt.com/codex/app">ChatGPT app for Mac</a>, on your plan. Already use it? You're set: Internalize signs you in with one click, on OpenAI's own page.</p></div>
+      <div class="step"><div class="n">01</div><h4>have chatgpt or claude</h4><p>Internalize answers through the <a href="https://learn.chatgpt.com/codex/app">ChatGPT app for Mac</a> or <a href="https://code.claude.com/docs/en/setup">Claude Code</a>, on the plan you already have. You sign in once, on OpenAI's or Anthropic's own page.</p></div>
       <div class="step"><div class="n">02</div><h4>download internalize</h4><p>Open the DMG, drag to Applications, launch. Signed and notarized, no warnings, no setup, and it updates itself from then on.</p></div>
       <div class="step"><div class="n">03</div><h4>read deeper</h4><p>Drop a PDF on the welcome screen, select anything, and ask. Your documents, annotations, and conversations persist in projects, locally.</p></div>
     </div>
     <div class="shot"><img src="screenshot-hub.jpg" alt="The project hub: every project as a card wearing its document's title page" loading="lazy" /></div>
+    <!-- TODO screenshot: Claude beside ChatGPT. The reading window, with the same demo library, document,
+         light appearance and size as screenshot-reading.png (2000x1338), the chat's reply menu open:
+         a "ChatGPT" section and a "Claude" section, each listing its models, a Claude model checked,
+         and the Claude plan's usage section (5-hour and weekly) below. No email or account name in view.
+         Suggested home: a second shot right here, under the hub, e.g.
+         <div class="shot"><img src="screenshot-claude.png" alt="The reply menu with a ChatGPT and a Claude section, a Claude model chosen" loading="lazy" /></div> -->
   </div>
 </section>
 
@@ -334,10 +340,10 @@
     <p class="eyebrow">privacy</p>
     <h2 class="statement">local-first, by architecture.</h2>
     <div class="grid2">
-      <div class="pv"><h4>your documents stay on your mac</h4><p>The only network traffic is your own AI requests, through your own Codex installation.</p></div>
+      <div class="pv"><h4>your documents stay on your mac</h4><p>The only network traffic is your own AI requests, through your own Codex or Claude Code installation.</p></div>
       <div class="pv"><h4>no telemetry, no analytics, no accounts</h4><p>We operate zero servers. Verify it with any network monitor.</p></div>
-      <div class="pv"><h4>credentials never touch internalize</h4><p>You sign in on OpenAI's page; Internalize only checks that you're signed in.</p></div>
-      <div class="pv"><h4>codex runs caged</h4><p>Read-only sandbox, approvals off, an isolated profile with the shell, browser, computer and app access switched off. It can read your document and search the web. It can't act on your Mac.</p></div>
+      <div class="pv"><h4>credentials never touch internalize</h4><p>You sign in on OpenAI's or Anthropic's own page, and Claude Code keeps its sign-in in your Mac's keychain. Internalize only checks that you're signed in.</p></div>
+      <div class="pv"><h4>both agents run caged</h4><p>Each runs in Internalize's own isolated profile, with the shell, the browser and every other tool switched off, and none of your own settings loaded. They can read your document and search the web. They can't act on your Mac.</p></div>
     </div>
   </div>
 </section>
@@ -349,15 +355,19 @@
     <div class="faq">
       <details>
         <summary>is it really free? what's the catch?</summary>
-        <p>Really free. The expensive part of AI apps is the AI. Internalize sidesteps that by running on the ChatGPT plan you already have, through Codex on your machine. There's no catch to monetize; if the app earns a place in your reading life, there's a tip jar.</p>
+        <p>Really free. The expensive part of AI apps is the AI. Internalize sidesteps that by running on the ChatGPT or Claude plan you already have, through Codex or Claude Code on your machine. There's no catch to monetize; if the app earns a place in your reading life, there's a tip jar.</p>
       </details>
       <details>
-        <summary>why does it need codex?</summary>
+        <summary>why does it use codex?</summary>
         <p>Codex is OpenAI's local agent, and its app-server protocol is the documented way for third-party software to integrate it. That's what lets Internalize give you frontier-model conversations with zero API keys and zero per-token costs. Your plan, your machine, your data.</p>
       </details>
       <details>
-        <summary>does internalize see my chatgpt password or data?</summary>
-        <p>No. You sign in on OpenAI's own page (Internalize opens it for you) or in the ChatGPT app. Internalize never handles credentials. It runs Codex in an isolated, read-only profile with no shell, so your own Codex settings are untouched and the app can't perform actions through it, only conversations.</p>
+        <summary>does it work with claude?</summary>
+        <p>Yes. Internalize also answers through Claude Code, on a paid Claude plan. Open the Code tab in the Claude app once, or use Anthropic's installer, then sign in once: Claude Code opens Anthropic's sign-in page in your browser. It's a separate sign-in from the Claude app's, kept in Internalize's own private Claude Code profile. Use both if you like: the reply menu lists each one's models, any conversation can switch between them, and each conversation remembers its model. The document tools, page citations and web search work the same either way.</p>
+      </details>
+      <details>
+        <summary>does internalize see my password or data?</summary>
+        <p>No. You sign in on OpenAI's own page (Internalize opens it for you) or in the ChatGPT app, and for Claude on Anthropic's own page, which Claude Code opens in your browser. Internalize never handles credentials; Claude Code keeps its sign-in in your Mac's keychain. It runs Codex in an isolated, read-only profile with no shell, and Claude Code in a private profile with only Internalize's document tools and web search, so your own settings are untouched and the app can't perform actions through either, only conversations.</p>
       </details>
       <details>
         <summary>which macs does it support?</summary>
@@ -365,7 +375,7 @@
       </details>
       <details>
         <summary>why isn't it on the app store?</summary>
-        <p>The App Store sandbox forbids apps from launching external programs, which is precisely how Internalize drives Codex. Direct distribution with Apple's notarization gives you the same malware-scanned safety without that limitation.</p>
+        <p>The App Store sandbox forbids apps from launching external programs, which is precisely how Internalize drives Codex and Claude Code. Direct distribution with Apple's notarization gives you the same malware-scanned safety without that limitation.</p>
       </details>
     </div>
   </div>
@@ -387,7 +397,7 @@
 
 <footer>
   <div class="wrap">
-    <div>internalize · made by <a href="https://github.com/seyeint">taste</a> · not affiliated with or endorsed by OpenAI or Apple</div>
+    <div>internalize · made by <a href="https://github.com/seyeint">taste</a> · not affiliated with or endorsed by OpenAI, Anthropic or Apple</div>
     <div class="flinks">
       <a href="https://github.com/seyeint/internalize-releases/releases">releases</a>
       <a href="https://github.com/seyeint/internalize-releases/issues">issues</a>
