@@ -19,7 +19,7 @@ No API key needed, no subscription, no servers. Free.
 
 - **macOS 15** or newer (Apple Silicon and Intel)
 - The **[ChatGPT app for Mac](https://learn.chatgpt.com/codex/app)**. Codex ships inside it, and Internalize runs its AI through Codex on *your* plan, which is why it's free and needs no API key. If Codex isn't signed in on your Mac yet, Internalize signs you in with one click, on OpenAI's own page
-- Or **Claude Code**, with a paid Claude plan or an Anthropic API key (billed to you by Anthropic). Open the Code tab in the Claude app once, or install it with [Anthropic's installer](https://code.claude.com/docs/en/setup). You sign in once: Claude Code opens Anthropic's sign-in page in your browser. That sign-in is separate from the Claude app's and stays in Internalize's own private Claude Code profile
+- Or **Claude Code**, with a paid Claude plan. Open the Code tab in the Claude app once, or install it with [Anthropic's installer](https://code.claude.com/docs/en/setup). You sign in once: Claude Code opens Anthropic's sign-in page in your browser. That sign-in is separate from the Claude app's and stays in Internalize's own private Claude Code profile
 
 ## Install
 
