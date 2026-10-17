@@ -1,14 +1,18 @@
-<?xml version="1.0" standalone="yes"?>
-<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Internalize</title>
         <item>
-            <title>0.7.1</title>
-            <pubDate>Mon, 12 Oct 2026 23:35:50 +0100</pubDate>
-            <sparkle:version>12</sparkle:version>
-            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
+            <title>0.8.0</title>
+            <pubDate>Sun, 18 Oct 2026 00:29:58 +0100</pubDate>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.7.1/Internalize-0.7.1.dmg" length="8657807" type="application/octet-stream" sparkle:edSignature="wfND34Q9gnNQJzFRgZRzu0VwofCypJ2S1+OtOYxBPx2P600SGwOi3of/IWCpw8oSNq/c9JrieC/ZoKOtAcIwCg=="/>
+            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.8.0/Internalize-0.8.0.dmg" length="9067355" type="application/octet-stream" sparkle:edSignature="IWsJXP59wHVChdKO5V5rFpZpCenUv1dv2UFO3pQzkMCGbq45DCXPcU2eS/zfRIXPQHOoZDWjQFPJGtWqjsnrDw=="></enclosure>
         </item>
     </channel>
-</rss>
+</rss><!-- sparkle-signatures:
+edSignature: chWzOFRLj+TfhjUeCbhULiJqBj5ktpV1vm4lONgUWVoIsjaIt6j+qnpcwWMMnUNthC8vsBVIwZ+GdsavWfF0DQ==
+length: 1059
+-->
