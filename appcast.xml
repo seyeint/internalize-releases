@@ -4,15 +4,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Internalize</title>
         <item>
-            <title>0.8.0</title>
-            <pubDate>Sun, 18 Oct 2026 00:29:58 +0100</pubDate>
-            <sparkle:version>13</sparkle:version>
-            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
+            <title>0.8.1</title>
+            <pubDate>Sat, 31 Oct 2026 19:00:35 +0000</pubDate>
+            <sparkle:version>14</sparkle:version>
+            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.8.0/Internalize-0.8.0.dmg" length="9067355" type="application/octet-stream" sparkle:edSignature="IWsJXP59wHVChdKO5V5rFpZpCenUv1dv2UFO3pQzkMCGbq45DCXPcU2eS/zfRIXPQHOoZDWjQFPJGtWqjsnrDw=="></enclosure>
+            <enclosure url="https://github.com/seyeint/internalize-releases/releases/download/v0.8.1/Internalize-0.8.1.dmg" length="9093951" type="application/octet-stream" sparkle:edSignature="Eg4fsSDxkcgunquB4Om4xd0b/GQDfVrFmV+d/TWXkFsS/YcXDLiT9I6M4FGYwjAdQBkOYT7WAlb93+waps7nDA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: chWzOFRLj+TfhjUeCbhULiJqBj5ktpV1vm4lONgUWVoIsjaIt6j+qnpcwWMMnUNthC8vsBVIwZ+GdsavWfF0DQ==
+edSignature: wU9MesmCqXupyzux4VwKcZs4dLAns+e4hhg0MmPUtzdc0ZvmIjrDjTD6Im4Rr0CJz7OZWmNahq51SdAnqx80BA==
 length: 1059
 -->
