@@ -32,6 +32,7 @@ The app is signed and notarized by Apple, so it opens without warnings. Updates 
 ## Features
 
 - 🤖 The AI reads the document itself: it has the table of contents and three tools (search the text, read pages, look at a page as it's printed, figures and tables included), looks up what your question needs, and cites the exact words. A short document travels in full; a long book is read on demand. Every step shows in the conversation
+- 🎓 Internalize This Section: a tutor asks you a few short questions on the section you're reading, your own earlier questions among them, and the pages settle each answer. Only when you start one, and "just tell me" always answers. The way it tutors is adapted from Jane Street's open-source Socratic tutor skill
 - 🔀 ChatGPT or Claude, or both: the reply menu lists each one's models, any conversation can switch between them, and each conversation remembers its model. The document tools, citations, and web search work the same either way
 - 💬 Replies keep going: hide the chat, open the hub or switch conversations, and the answer keeps coming in; two conversations can be answered at once, and quitting keeps what came
 - ✋ Stop before the first word and your question comes back to the composer; a failed answer keeps its words and offers your other engine

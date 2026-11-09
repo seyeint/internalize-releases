@@ -112,7 +112,7 @@
   }
   .on-night .shot { box-shadow: 0 30px 80px rgba(0,0,0,0.6); border-color: rgba(244,241,234,0.08); }
 
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 56px); margin-top: clamp(48px, 7vw, 96px); }
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(24px, 4vw, 56px); row-gap: clamp(40px, 5vw, 72px); margin-top: clamp(48px, 7vw, 96px); }
   .feature { border-top: 1px solid rgba(244,241,234,0.14); padding-top: 26px; }
   .feature .h3 { margin-bottom: 14px; }
   .feature p { color: var(--chalk-2); font-size: 16px; line-height: 1.5; max-width: 34ch; }
@@ -302,6 +302,10 @@
         <h3 class="h3">a reading life, kept</h3>
         <p>Projects, documents, highlights, conversations, all local. The PDF's own contents in the sidebar, scanned pages read on your Mac, <code>⌘F</code> that finds anything.</p>
       </div>
+      <div class="feature">
+        <h3 class="h3">a tutor, when you want one</h3>
+        <p>Choose Internalize This Section and it asks you a few short questions on what you just read, your own earlier questions among them. The pages settle each answer, and you leave knowing where you stand.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -360,6 +364,10 @@
         <p>Yes. Internalize also answers through Claude Code, on a paid Claude plan. Open the Code tab in the Claude app once, or use Anthropic's installer, then sign in once: Claude Code opens Anthropic's sign-in page in your browser. It's a separate sign-in from the Claude app's, kept in Internalize's own private Claude Code profile. Use both if you like: the reply menu lists each one's models, any conversation can switch between them, and each conversation remembers its model. The document tools, page citations and web search work the same either way.</p>
       </details>
       <details>
+        <summary>will it quiz me?</summary>
+        <p>Only if you ask. Internalize This Section starts a conversation where a tutor asks you a few short questions on the section you're reading, about five for a page or two and about fifteen for a long chapter, and the pages settle each answer. Say “just tell me” and it tells you. Everything else works as it always has. The way it tutors is adapted from the Socratic tutor skill Jane Street published as open source.</p>
+      </details>
+      <details>
         <summary>does internalize see my password or data?</summary>
         <p>No. You sign in on OpenAI's own page (Internalize opens it for you) or in the ChatGPT app, and for Claude on Anthropic's own page, which Claude Code opens in your browser. Internalize never handles credentials; Claude Code keeps its sign-in in your Mac's keychain. It runs Codex in an isolated, read-only profile with no shell, and Claude Code in a private profile with only Internalize's document tools and web search, so your own settings are untouched and the app can't perform actions through either, only conversations.</p>
       </details>
@@ -395,7 +403,7 @@
 
 <footer>
   <div class="wrap">
-    <div>internalize · made by <a href="https://github.com/seyeint">taste</a> · not affiliated with or endorsed by OpenAI, Anthropic or Apple</div>
+    <div>internalize · made by <a href="https://github.com/seyeint">taste</a> · not affiliated with or endorsed by OpenAI, Anthropic, Apple or Jane Street</div>
     <div class="flinks">
       <a href="https://github.com/seyeint/internalize-releases/releases">releases</a>
       <a href="https://github.com/seyeint/internalize-releases/issues">issues</a>
